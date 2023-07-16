@@ -1,0 +1,5 @@
+name: cmd_alert
+main: net.md_5.bungee.module.cmd.alert.PluginAlert
+version: git:cmd_alert:1.20-R0.1-SNAPSHOT:58f7ae0:unknown
+description: Provides the alert and alertraw commands
+author: WaterfallMC

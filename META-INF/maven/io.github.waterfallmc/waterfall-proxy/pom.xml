@@ -1,0 +1,237 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.github.waterfallmc</groupId>
+        <artifactId>waterfall-parent</artifactId>
+        <version>1.20-R0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <groupId>io.github.waterfallmc</groupId>
+    <artifactId>waterfall-proxy</artifactId>
+    <version>1.20-R0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>Waterfall-Proxy</name>
+    <description>Proxy component of the Elastic Portal Suite</description>
+
+    <properties>
+        <maven.deploy.skip>true</maven.deploy.skip>
+        <maven.javadoc.skip>true</maven.javadoc.skip>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-codec-haproxy</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-codec-http</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <!-- Waterfall Start - add Netty DNS resolver -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-resolver-dns</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-resolver-dns-native-macos</artifactId>
+            <classifier>osx-x86_64</classifier>
+        </dependency>
+        <!-- Waterfall End -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-handler</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-transport-native-epoll</artifactId>
+            <classifier>linux-x86_64</classifier>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-transport-native-epoll</artifactId>
+            <classifier>linux-aarch_64</classifier>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.waterfallmc</groupId>
+            <artifactId>waterfall-api</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.waterfallmc</groupId>
+            <artifactId>waterfall-log4j</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.waterfallmc</groupId>
+            <artifactId>waterfall-native</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.waterfallmc</groupId>
+            <artifactId>waterfall-protocol</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.waterfallmc</groupId>
+            <artifactId>waterfall-query</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- // Waterfall - We already bundle an slf4j impl
+        <dependency>
+            <groupId>net.md-5</groupId>
+            <artifactId>bungeecord-slf4j</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency> // Waterfall - We already bundle an slf4j impl -->
+        <dependency>
+            <groupId>net.sf.jopt-simple</groupId>
+            <artifactId>jopt-simple</artifactId>
+            <version>5.0.4</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>8.0.33</version>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- add these back in as they are not exposed by the API -->
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-resolver-provider</artifactId>
+            <version>3.8.5</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.resolver</groupId>
+            <artifactId>maven-resolver-connector-basic</artifactId>
+            <version>1.7.3</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.resolver</groupId>
+            <artifactId>maven-resolver-transport-http</artifactId>
+            <version>1.7.3</version>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- Waterfall start - Console improvements - bring back slf4j-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <version>1.7.36</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.minecrell</groupId>
+            <artifactId>terminalconsoleappender</artifactId>
+            <version>1.3.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.jline</groupId>
+                    <artifactId>jline-terminal</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.jline</groupId>
+            <artifactId>jline-terminal-jansi</artifactId>
+            <version>3.21.0</version>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- Waterfall end -->
+        
+        <!-- FlameCord start - Add our dependencies -->
+        <dependency>
+            <groupId>dev._2lstudios</groupId>
+            <artifactId>waterfall-flamecord</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.waterfallmc</groupId>
+            <artifactId>waterfall-native</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.waterfallmc</groupId>
+            <artifactId>waterfall-module-cmd-alert</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.waterfallmc</groupId>
+            <artifactId>waterfall-module-cmd-find</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.waterfallmc</groupId>
+            <artifactId>waterfall-module-cmd-list</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.waterfallmc</groupId>
+            <artifactId>waterfall-module-cmd-send</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.waterfallmc</groupId>
+            <artifactId>waterfall-module-cmd-server</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.md-5</groupId>
+            <artifactId>bungeecord-module-reconnect-yaml</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- FlameCord end -->
+    </dependencies>
+
+    <!-- Waterfall start - copy license files into jar -->
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>../</directory>
+                <includes>
+                    <include>LICENSE</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>../../</directory>
+                <includes>
+                    <include>LICENSE.txt</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+    <!-- Waterfall end -->
+</project>

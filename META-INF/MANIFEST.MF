@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Version: git:Waterfall-Bootstrap:1.20-R0.1-SNAPSHOT:58f
+ 7ae0:unknown
+Multi-Release: true
+Build-Jdk-Spec: 1.8
+Created-By: Maven JAR Plugin 3.3.0
+Specification-Version: 20230716
+Main-Class: net.md_5.bungee.Bootstrap
+

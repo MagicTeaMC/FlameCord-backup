@@ -1,0 +1,85 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.github.waterfallmc</groupId>
+        <artifactId>waterfall-parent</artifactId>
+        <version>1.20-R0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <groupId>io.github.waterfallmc</groupId>
+    <artifactId>waterfall-api</artifactId>
+    <version>1.20-R0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>Waterfall-API</name>
+    <description>API implemented by the Elastic Portal Suite</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.github.waterfallmc</groupId>
+            <artifactId>waterfall-chat</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.waterfallmc</groupId>
+            <artifactId>waterfall-config</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.waterfallmc</groupId>
+            <artifactId>waterfall-event</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.waterfallmc</groupId>
+            <artifactId>waterfall-protocol</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-transport-native-unix-common</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-resolver-provider</artifactId>
+            <version>3.8.5</version>
+            <!-- not part of the API proper -->
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.resolver</groupId>
+            <artifactId>maven-resolver-connector-basic</artifactId>
+            <version>1.7.3</version>
+            <!-- not part of the API proper -->
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.resolver</groupId>
+            <artifactId>maven-resolver-transport-http</artifactId>
+            <version>1.7.3</version>
+            <!-- not part of the API proper -->
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>2.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- Waterfall - Add SLF4J -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.36</version>
+        </dependency>
+    </dependencies>
+</project>
